@@ -5,7 +5,6 @@ class Main
     @app = App.new
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
   def menu
     puts 'Welcome to School Library App!'
     loop do
@@ -40,7 +39,6 @@ class Main
       end
     end
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
 end
 
 main = Main.new
