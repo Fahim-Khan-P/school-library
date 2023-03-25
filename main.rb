@@ -5,6 +5,7 @@ class Main
     @app = App.new
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def menu
     puts 'Welcome to School Library App!'
     loop do
@@ -20,8 +21,9 @@ class Main
 
       case option
       when '1'
-        @app.list_all_books when '2'
-                              g@app.list_all_people
+        @app.list_all_books
+      when '2'
+        @app.list_all_people
       when '3'
         @app.create_person
       when '4'
@@ -38,6 +40,7 @@ class Main
       end
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 end
 
 main = Main.new
