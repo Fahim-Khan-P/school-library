@@ -14,6 +14,7 @@
     - [Run Tests](#run-tests)
   - [👥 Authors ](#-authors-)
     - [👤 **Fahim Khan**:](#-salwa-ballouti)
+    - [👤 **Tonny Muchui**:](#-salwa-ballouti)
 - [🔭 Future Features:](#-future-features)
 - [🤝 Contributing:](#-contributing)
   - [⭐️ Show your support ](#️-show-your-support-)
@@ -84,17 +85,17 @@ In order to run this project you need:
 
 Clone this repository to your desired folder:
 
-```sh 
+```sh
 https://github.com/Fahim-Khan-P/school-library.git
   ```
-  ```sh 
+  ```sh
   cd Ruby-school-library bundle install
   ```
-  ```sh 
+  ```sh
   bundle install
   ```
 ### Run Tests
-  ```sh 
+  ```sh
   Rubocop --color
   ```
 
@@ -106,7 +107,12 @@ https://github.com/Fahim-Khan-P/school-library.git
 ### 👤 **Fahim Khan**:
 - GitHub: [Fahim-Khan-P](https://github.com/Fahim-Khan-P/)
 - LinkedIn: [Fahim Khan](https://www.linkedin.com/in/fahimkhan-p/)
-  
+
+👤 **Tonny Muchui**
+
+- GitHub: [@tonnymuchui](https://github.com/tonnymuchui)
+- Twitter: [@Tonnymuchui6](https://twitter.com/Tonnymuchui6)
+- LinkedIn: [Tonny Muchui](https://www.linkedin.com/in/tonny-muchui-murungi-9b549a174/)
 # 🔭 Future Features:
 - Add more advanced Ruby functions.
 - Build wonderful UI.
