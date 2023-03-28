@@ -7,7 +7,7 @@ class Main
   end
 
   def main
-    puts 'welcome to school library App!'
+    puts 'welcome to the school library App!'
     loop do
       puts "\nPlease choose an option by entering a number:
   1 - List all books
