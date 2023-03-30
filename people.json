@@ -1,0 +1,1 @@
+[{"type":"Student","name":"Tonny","age":20,"parent_permission":true,"id":120,"rentals":[]},{"type":"Teacher","name":"Muchui","age":23,"parent_permission":true,"id":213,"rentals":[{"date":"12-12-2022","book_title":"book1","person_id":421}]}]
