@@ -4,12 +4,13 @@ require './rental'
 require './classroom'
 require './person'
 require './book'
+require './data/preservedata'
 
 class App
   def initialize
-    @people = []
-    @books = []
-    @rentals = []
+    @people = load_data('./data/people.json')
+    @books = load_data('./data/books.json')
+    @rentals = load_data('./data/rental.json')
     @classroom = Classroom.new('Grade 10')
   end
 
@@ -18,8 +19,8 @@ class App
       puts 'Oops! the library is empty, please add books'
       return
     end
-    @books.each do |book|
-      puts "Title: #{book.title}, Author: #{book.author}"
+    @books.each_with_index do |book, index|
+      puts "#{index + 1} Title: #{book['title']}, Author: #{book['author']}"
     end
   end
 
@@ -27,8 +28,8 @@ class App
     if @people.empty?
       puts 'Oops! no people registered, please add people'
     else
-      @people.each do |person|
-        puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      @people.each_with_index do |person, index|
+        puts "#{index + 1}: Name: #{person['name']}, ID: #{person['id']}, Age: #{person['age']}"
       end
     end
   end
@@ -58,7 +59,15 @@ class App
     parent_permission = gets.chomp.downcase
 
     student = Student.new(age, @classroom, name, parent_permission: parent_permission == 'y')
-    @people << student
+    person = Person.new(age, name, parent_permission: true)
+    student_data = {
+      age: student.age,
+      name: student.name,
+      id: person.id,
+      parent_permission: student.parent_permission
+    }
+    @people << student_data
+    save_data('./data/people.json', @people)
     puts 'Student created successfully'
   end
 
@@ -72,7 +81,17 @@ class App
     print 'Specialization:'
     specialization = gets.chomp
 
-    @people << Teacher.new(age, specialization, name)
+    teacher = Teacher.new(age, specialization, name)
+    person = Person.new(age, name, parent_permission: true)
+
+    teacher_data = {
+      age: teacher.age,
+      specialization: teacher.specialization,
+      name: teacher.name,
+      id: person.id
+    }
+    @people << teacher_data
+    save_data('./data/people.json', @people)
     puts 'Teacher created successfully'
   end
 
@@ -83,42 +102,51 @@ class App
     print 'Author: '
     author = gets.chomp
 
-    @books << Book.new(title, author)
+    books = Book.new(title, author)
 
+    books_data = {
+      title: books.title,
+      author: books.author
+    }
+
+    @books << books_data
+    save_data('./data/books.json', @books)
     puts 'Book created successfully'
   end
 
   def create_rental
     puts 'Select a book from the following list by number'
     @books.each_with_index do |book, index|
-      puts "#{index}) Title: #{book.title}, Author: #{book.author}"
+      # puts book
+      puts "#{index}) Title: #{book['title']}, Author: #{book['author']}"
     end
 
     book_id = gets.chomp.to_i
 
     puts 'Select a person from the following list by number (not ID)'
     @people.each_with_index do |person, index|
-      puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      puts "#{index}) #{person['class']} Name: #{person['name']}, ID: #{person['id']}, Age: #{person['age']}"
     end
 
     person_id = gets.chomp.to_i
 
     print 'Date: '
-    date = gets.chomp
+    date = gets.chomp.to_s
 
-    @rentals << Rental.new(date, @people[person_id], @books[book_id])
+    rental = Rental.new(date, @people[person_id], @books[book_id])
+    @rentals << rental.to_h
+    save_data('./data/rental.json', @rentals)
     puts 'Rental created successfully'
   end
 
   def list_rentals
     print 'ID of person: '
     id = gets.chomp.to_i
-
-    rentals = @rentals.filter { |rental| rental.person.id == id }
+    rentals = @rentals.filter { |rental| rental['person']['id'] == id }
 
     puts 'Rentals:'
     rentals.each do |rental|
-      puts "Date: #{rental.date}, Book: '#{rental.book.title}' by #{rental.book.author}"
+      puts "Date: #{rental['date']}, Book: '#{rental['book']['title']}' by #{rental['book']['author']}"
     end
   end
 end

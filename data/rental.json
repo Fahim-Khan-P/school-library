@@ -1,0 +1,28 @@
+[
+  {
+    "date": "12",
+    "book": {
+      "title": "ruby",
+      "author": "ALi"
+    },
+    "person": {
+      "age": 122,
+      "specialization": "web",
+      "name": "khan",
+      "id": 42
+    }
+  },
+  {
+    "date": "3",
+    "book": {
+      "title": "ruby",
+      "author": "ALi"
+    },
+    "person": {
+      "age": 122,
+      "specialization": "web",
+      "name": "khan",
+      "id": 42
+    }
+  }
+]
