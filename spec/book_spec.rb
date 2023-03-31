@@ -5,7 +5,7 @@ require_relative '../person'
 describe Book do
   before :each do
     @book = Book.new('newTitle', 'newAuthor')
-    @person = Person.new(age: 23)
+    @person = Person.new(23)
   end
 
   context 'Creating a book' do
@@ -18,8 +18,8 @@ describe Book do
     end
 
     it 'Should return title and author' do
-      expect @book.title.should eq 'newTitle'
-      expect @book.author.should eq 'newAuthor'
+      expect @book.title.should eql 'newTitle'
+      expect @book.title.should eql 'newAuthor'
     end
   end
 end
