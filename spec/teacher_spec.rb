@@ -2,8 +2,8 @@ require_relative '../teacher'
 
 describe Teacher do
   describe '#initialize' do
-    it 'creates a new Teacher object' do
-      teacher = Teacher.new(19, 'Math', 'Tonny', true)
+    teacher = Teacher.new(19, 'Math', 'Tonny', true)
+    it 'should create a teacher' do
       expect(teacher).to be_an_instance_of Teacher
     end
   end
