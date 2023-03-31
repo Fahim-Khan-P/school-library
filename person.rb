@@ -15,8 +15,6 @@ class Person < Nameable
     @rentals = []
   end
 
-  private
-
   def of_age?
     @age >= 18
   end
