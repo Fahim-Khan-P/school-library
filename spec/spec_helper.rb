@@ -1,0 +1,8 @@
+require_relative '../person'
+require_relative '../book'
+require_relative '../classroom'
+require_relative '../base_decorator'
+require_relative '../rental'
+require_relative '../student'
+require_relative '../teacher'
+require 'yaml'
